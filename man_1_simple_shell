@@ -1,77 +1,43 @@
-.TH SHELL 3 "5 April 2020" "1.0" "shell man page"
+.TH "simple_shell" 1 13July 2023" ""
 .SH NAME
-ShiP$ - shellter_in_place
-
-
+simple_shell - a shell (standard command line interpreter)
 .SH SYNOPSIS
-ShiP$ [options] [file]
-
-
+hsh [-abcDefg] [arguement ...]
 .SH DESCRIPTION
-
-.B ShiP$
-is a command language interpreter that executes commands read from the standard
-input or from a file.
-
-.B Overview
-
-shellter_in_place is a shell that reads input and generally executes commands.
-
-.B Lexical Structure
-
-shellter_in_place reads lines from a file and breaks it up
-into tokens at whitespace.
-
-.B ./hsh
-This executable file runs shellter_in_place
-
+The hsh utility reads and interprets a command line string, either in interactive or non-interactive mode. It then executes commands based on the input.  Both the local directory and PATH are searched.
+When applicable, the  function prints to stdout or stderr, the standard output and error stream, respectively.
+In interactive mode, the shell will prompt with \' $ \', and proess the entered input upon a return stroke.  In non-interactive mode, standard output must be piped into the executable.
 .SH USAGE
-	In addition to searching the path, the following features are supported:
-.br
-	exit - Exit shell with a specified exit status
-.br
-	env - Print a list of the environment variables
-.br
-	setenv - Set a new environment variable
-.br
-	unsetenv - Unset an environment variable
-.br
-	cd - Change directories
-.br
-	Ctrl-D - End of file: exit shell
-.br
-	; - Command separator
-.br
-	# - Comment indicator
-.br
-.SH BUILTINS
-.br
-	exit - to exit shellter_in_place
-.br
-	cd - to change the directory
-.br
-	env - prints out the environment variables
-.br
-	setenv - initialize a new environment variable, or modify an existing one
-.br
-	unsetenv - remove an environment variable
-.br
+In addition to searching the path, the following features are supported.
+   exit - Exit shell with a specified exit status
+   env - Print a list of the environment variables
+   setenv - Set a new environment variable
+   unsetenv - Unset an environment variable
+   cd - Change directories
+   Ctrl-D - End of file: exit shell
+   Ctrl-C - Does NOT exit shell
+   ; - Command separator for command chaining
+   # - Comment indicator
+.SH EXAMPLE USAGE
+cd -
 
+env
 
-.SH EXAMPLE
+ls -l
 
-Ship$ ls -a
+exit 98
 
-hsh main.c header.h
-
-Ship$ exit
-
-$
-
-
+.SH LIMITATIONS
+Word length - Buffers of 1024 characacters are used in several aspects of the shell. Excessively long filenames or paths may cause errors.
 .SH BUGS
-No known bugs
-
-.SH AUTHOR
-Zac Woll (zachary.woll@holbertonschool.com) and Tabitha O'Melay
-(tabitha.omelay@holbertonschool.com)
+No known bugs at this time.
+.SH AUTHORS
+Written by Arthur Damm and Jason Cortella
+.SH IN PROGRESS
+The following features are currently in progress
+    && and || operators
+    aliases
+    variable replacements
+    help
+    history
+    taking a file as input
